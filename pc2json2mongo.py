@@ -31,5 +31,5 @@ for gzpath in glob.glob(os.path.join(compounddir, 'Compound_*.asn.gz')):
     jsonfile.close()
 
     print('Importing to MongoDB')
-    subprocess.call([mongoimport, '--host', 'ciipro.rutgers.edu', '--port', '27017', '-d', 'learnDB', '-c', 'pcompounds', '-u', 'yw518', '-p', 'tmp2016', '--authenticationDatabase', 'admin', jsonpath])
+    subprocess.call([mongoimport, '--host', 'ciipro.rutgers.edu', '--port', '27017', '-d', 'master', '-c', 'pcompounds', '-u', 'yw518', '-p', 'tmp2016', '--authenticationDatabase', 'admin', jsonpath])
 #  mongoimport '--host', 'ciipro.rutgers.edu', '--port', '27017', '-d', 'learnDB', '-c' 'pcompounds', '-u', 'yw518', '-p', 'tmp2016', '--authenticationDatabase', 'admin',  --file compounds1.json
