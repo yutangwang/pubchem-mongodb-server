@@ -14,7 +14,14 @@ chemspider = db.chemspider
 
 cs = ChemSpider('0064dc77-e5cb-4e86-93da-e8aedd62baa0')
 
-csids = list(range(30001, 40001))
+
+x = int(input("Enter the first csid to start: "))
+y = int(input("Enter the second csid to end: "))
+csids = [x,y]
+with open('retrieving_log.txt', 'a') as retrieving_log:
+    retrieving_log.write(strftime("%Y-%m-%d\t%H:%M:%S" , gmtime()))
+    retrieving_log.write(strftime('From ' + str(x) + ' to ' + str(y))
+#csids = list(range(30001, 40001))
 random.shuffle(csids)
 doc = {}
 
