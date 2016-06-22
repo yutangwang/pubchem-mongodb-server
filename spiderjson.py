@@ -17,7 +17,7 @@ else:
     exit()
 
 
-cs_security_key = ['6a4cb931-b018-4ffe-96e4-85f704e5f2a6','0064dc77-e5cb-4e86-93da-e8aedd62baa0', '66aed41a-8c86-46ac-a75b-8c36db733768']
+cs_security_key = ['6a4cb931-b018-4ffe-96e4-85f704e5f2a6','0064dc77-e5cb-4e86-93da-e8aedd62baa0', '66aed41a-8c86-46ac-a75b-8c36db733768','704484fb-3aa5-45f1-b6e1-faaf8aba47af']
 '''
 cskey = random.choice(cs_security_key)
 cs = ChemSpider(cskey)
