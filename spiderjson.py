@@ -17,10 +17,11 @@ else:
     exit()
 
 
-cs_security_key = ['6a4cb931-b018-4ffe-96e4-85f704e5f2a6','0064dc77-e5cb-4e86-93da-e8aedd62baa0', '66aed41a-8c86-46ac-a75b-8c36db733768']
+cs_security_key = ['6a4cb931-b018-4ffe-96e4-85f704e5f2a6','0064dc77-e5cb-4e86-93da-e8aedd62baa0', '66aed41a-8c86-46ac-a75b-8c36db733768','704484fb-3aa5-45f1-b6e1-faaf8aba47af']
+'''
 cskey = random.choice(cs_security_key)
 cs = ChemSpider(cskey)
-
+'''
 if os.path.isfile('chemspiderdb.json'):
     spiderjsonfileid = []
     with open('chemspiderdb.json', 'r') as jsonfile:
@@ -29,6 +30,8 @@ if os.path.isfile('chemspiderdb.json'):
             spiderjsonfileid.append(the_dict['_id'])
         #print(spiderjsonfileid)
     for csid in csids:
+        cskey = random.choice(cs_security_key)
+        cs = ChemSpider(cskey)
         if csid in spiderjsonfileid:
             print('{0} has been in the file'.format(str(csid)))
             continue
@@ -55,6 +58,8 @@ if os.path.isfile('chemspiderdb.json'):
             continue
 else:
     for csid in csids:
+        cskey = random.choice(cs_security_key)
+        cs = ChemSpider(cskey)
         compound = cs.get_compound(csid)
         try:
             doc = {'_id': int(compound.csid), 'common_name': compound.common_name}
