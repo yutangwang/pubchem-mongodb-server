@@ -16,7 +16,10 @@ else:
     print("You need a file named idrangeabc.json. Please send email to wangyt@neau.edu.cn. Thanks!")
     exit()
 
-cs = ChemSpider('6a4cb931-b018-4ffe-96e4-85f704e5f2a6')
+
+cs_security_key = ['6a4cb931-b018-4ffe-96e4-85f704e5f2a6','0064dc77-e5cb-4e86-93da-e8aedd62baa0', '66aed41a-8c86-46ac-a75b-8c36db733768']
+cskey = random.choice(cs_security_key)
+cs = ChemSpider(cskey)
 
 if os.path.isfile('chemspiderdb.json'):
     spiderjsonfileid = []
