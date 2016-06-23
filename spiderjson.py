@@ -3,6 +3,9 @@ from chemspipy import ChemSpider
 import random
 from time import sleep
 import os
+import timeit
+
+timerstart = timeit.default_timer()
 
 if os.path.isfile('idrangeabc.json'):
     with open('idrangeabc.json', 'r') as idrangefile:
@@ -85,4 +88,6 @@ else:
             with open('Invalid_ID.txt', 'a') as invalid_id:
                 invalid_id.write(str(compound.csid) + '\n')
             continue
+timerstop = timeit.default_timer()
 print("Please email 'idrange.json', 'chemspiderdb.json' and 'Invalid_ID' to wangyt@neau.edu.cn")
+print("Your computer and you have worked for " + str((timerstop-timerstart)/3600) + " hours!")
