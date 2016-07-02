@@ -20,16 +20,15 @@ else:
 
 
 def tokenchoice():
-    cs_security_key = ['6a4cb931-b018-4ffe-96e4-85f704e5f2a6', '0064dc77-e5cb-4e86-93da-e8aedd62baa0',
-                       '66aed41a-8c86-46ac-a75b-8c36db733768', '704484fb-3aa5-45f1-b6e1-faaf8aba47af',
-                       'f6b8adf6-c470-4b69-9a48-41ede6572a57']
-    return random.choice(cs_security_key)
+    if os.path.isfile('Security_token.txt'):
+        security_token = []
+        with open('Security_token.txt', 'r') as security_token_file:
+            for security_token_row in security_token_file.readlines():
+                security_token.append(security_token_row.strip())
+        return random.choice(security_token)
+    else:
+        print("You need Security_token.txt providing security token. Please contact me as soon as.")
 
-
-'''
-cskey = random.choice(cs_security_key)
-cs = ChemSpider(cskey)
-'''
 if os.path.isfile('chemspiderdb.json'):
     spiderjsonfileid = []
     with open('chemspiderdb.json', 'r') as jsonfile:
@@ -54,15 +53,15 @@ if os.path.isfile('chemspiderdb.json'):
             sleep(random.uniform(0.1, 0.5))
             doc['stdinchikey'] = compound.stdinchikey
             doc['smiles'] = compound.smiles
-            sleep(random.uniform(1, 1.2))
+            sleep(random.uniform(1, 5))
             with open('chemspiderdb.json', 'a') as jsonfile:
                 json.dump(doc, jsonfile)
                 jsonfile.write('\n')
-            print("Thanks! ")
+            print("{0} Thanks! ".format(str(csid)))
         except Exception as e:
             print(str(e) + 'Invalid ID  is ' + str(compound.csid))
             with open('Invalid_ID.txt', 'a') as invalid_id:
-                invalid_id.write(str(compound.csid) + '\n')
+                invalid_id.write(str(compound.csid) + '\n' + str(e) )
             continue
 else:
     for csid in csids:
@@ -83,12 +82,12 @@ else:
             with open('chemspiderdb.json', 'a') as jsonfile:
                 json.dump(doc, jsonfile)
                 jsonfile.write('\n')
-            print("Thanks! ")
+            print("{0} Thanks! ".format(str(csid)))
         except Exception as e:
             print(str(e) + 'Invalid ID  is ' + str(compound.csid))
             with open('Invalid_ID.txt', 'a') as invalid_id:
                 invalid_id.write(str(compound.csid) + '\n')
             continue
 timerstop = timeit.default_timer()
-print("Please email 'idrange.json', 'chemspiderdb.json' and 'Invalid_ID' to wangyt@neau.edu.cn")
+print("Please email 'idrangeabc.json', 'chemspiderdb.json' and 'Invalid_ID' to wangyt@neau.edu.cn")
 print("Your computer and you have worked for " + str((timerstop - timerstart) / 3600) + " hours!")
